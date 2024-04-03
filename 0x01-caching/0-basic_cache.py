@@ -7,17 +7,21 @@ from base_caching import BaseCaching
 class BasicCache(BaseCaching):
     """ BasicCache class """
 
-    def put(self, key, item):
+    def __init__(self):
+        """Call the constructor of the parent class"""
+        super().__init__()
+
+    def put(self, key: str, item: str) -> None:
             """ Add an item to the cache
             
             Args:
-                key: The key to associate with the item.
+                key (str): The key to associate with the item.
                 item: The item to be added to the cache.
             """
             if key is not None and item is not None:
                 self.cache_data[key] = item
 
-    def get(self, key):
+    def get(self, key: str) -> dict:
             """ Retrieve an item from the cache.
 
             Args:
@@ -27,7 +31,7 @@ class BasicCache(BaseCaching):
                 The value associated with the given key,
                 or None if the key is not found in the cache.
             """
-            if key is not None and key in self.cache_data:
-                return self.cache_data.get[key]
+            if key is not None:
+                return self.cache_data.get(key)
             else:
                 return None
