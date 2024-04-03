@@ -22,16 +22,14 @@ class LRUCache(BaseCaching):
         If the number of items exceeds the maximum allowed,
         the least recently used item is removed.
         """
-        if key is None and item is None:
+        if key is None or item is None:
             return
-
-        self.cache_data[key] = item
-
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            # lru_key = next(iter(self.cache_data))
+        
+        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             lru_key = list(self.cache_data.keys())[0]
+            print("DISCARD:", lru_key)
             del self.cache_data[lru_key]
-            print(f"DISCARD: {lru_key}")
+        self.cache_data[key] = item
 
     def get(self, key):
         """
