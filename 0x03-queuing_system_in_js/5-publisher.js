@@ -1,19 +1,15 @@
 import redis from 'redis';
 
-// Create a Redis client
 const publisher = redis.createClient();
 
-// Event handler for successful connection
 publisher.on('connect', () => {
     console.log('Redis client connected to the server');
 });
 
-// Event handler for connection error
 publisher.on('error', (err) => {
     console.error(`Redis client not connected to the server: ${err}`);
 });
 
-// Function to publish a message after a certain time
 function publishMessage(message, time) {
     setTimeout(() => {
         console.log(`About to send ${message}`);

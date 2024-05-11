@@ -18,12 +18,8 @@ function createPushNotificationsJobs(jobs, queue) {
                 console.log(`Notification job ${jobInstance.id} ${progress}% complete`);
             });
 
-            job.save((err) => {
-                if (err) {
-                    console.error(`Error creating job: ${err}`);
-                }
-        });
-    });
+            job.save();
+});
 }
 
 export default createPushNotificationsJobs;

@@ -6,7 +6,6 @@ describe('createPushNotificationsJobs', () => {
   let queueMock;
 
   beforeEach(() => {
-    // Create a mock job instance with event listeners
     const jobInstance = {
       on: sinon.stub().returnsThis(),
       save: sinon.stub()
